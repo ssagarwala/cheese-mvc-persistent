@@ -35,12 +35,14 @@ public class MenuController {
     @RequestMapping(value="add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title", "Add Menu");
-        model.addAttribute("menu", new Menu());
+        model.addAttribute(new Menu());
         return "menu/add";
     }
 
     @RequestMapping(value="add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute @Valid Menu menu, Errors errors ) {
+    public String add(Model model,
+                      @ModelAttribute @Valid Menu menu,
+                      Errors errors ) {
 
         if(errors.hasErrors()){
             model.addAttribute("title", "Add Menu");
@@ -77,8 +79,11 @@ public class MenuController {
 
         if(errors.hasErrors()){
             model.addAttribute("form",form);
-            return "menu/add-item";
+            return "menu/add-item/";
         }
+        System.out.println("MEnu Id "+form.getMenuId());
+        System.out.println("Cheese ID Id "+form.getCheeseId());
+
         Cheese theCheese = cheeseDao.findOne(form.getCheeseId());
         Menu theMenu = menuDao.findOne(form.getMenuId());
         theMenu.addItem(theCheese);

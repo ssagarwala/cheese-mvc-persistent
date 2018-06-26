@@ -12,7 +12,7 @@
                 <select name="cheeseId">
                     <option th:each="cheese: *{cheeses}"
                             th:text="${cheese.name}"
-                            th:value="${cheese.value}">
+                            th:value="${cheese.id}">
                     </option>
                 </select>
             </div>
@@ -24,4 +24,4 @@
         </form>
 
     </body>
-</html>>
+</html>

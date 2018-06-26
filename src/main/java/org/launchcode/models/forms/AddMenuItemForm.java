@@ -3,13 +3,14 @@ package org.launchcode.models.forms;
 import org.launchcode.models.Cheese;
 import org.launchcode.models.Menu;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 public class AddMenuItemForm {
-
+    @Id
     @NotNull
     private int menuId;
-
+    @Id
     @NotNull
     private int cheeseId;
 
@@ -43,7 +44,7 @@ public class AddMenuItemForm {
         return cheeses;
     }
 
-    Menu getMenu(){
+    public Menu getMenu(){
         return menu;
     }
 

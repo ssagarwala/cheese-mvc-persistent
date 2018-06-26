@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,7 +21,7 @@ public class Menu {
     private String name;
 
     @ManyToMany
-    private List<Cheese> cheeses;
+    private List<Cheese> cheeses = new ArrayList<>();
 
     public Menu(){}
 
@@ -31,13 +32,14 @@ public class Menu {
     public void addItem (Cheese item){
         cheeses.add(item);
     }
+
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
+
     public int getId(){
         return id;
     }
